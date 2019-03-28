@@ -3,14 +3,30 @@ import { Ng1StateDeclaration } from '@uirouter/angularjs/lib/interface';
 import { getTypeName, NgModule } from 'angular-ts-decorators';
 import { HomeComponent } from './home/home.component';
 import { TestComponent } from './test/test.component';
+import {
+  AngularAppAsWebComponentExampleComponent
+} from './angular-app-as-web-component-example/angular-app-as-web-component-example.component';
 
 export interface UiState extends Ng1StateDeclaration {
   component?: any;
 }
 
 const routes: UiState[] = [
-  { name: 'home', url: '', component: HomeComponent },
-  { name: 'test', url: '/test', component: TestComponent }
+  {
+    name: 'home',
+    url: '',
+    component: HomeComponent
+  },
+  {
+    name: 'test',
+     url: '/test',
+     component: TestComponent
+  },
+  {
+    name: 'angular-app-as-web-component-example',
+    url: '/angular-app-as-web-component-example',
+    component:  AngularAppAsWebComponentExampleComponent
+  }
 ];
 
 @NgModule({

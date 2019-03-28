@@ -15,7 +15,8 @@ export const commonConfig: webpack.Configuration = {
 
   entry: {
     app: path.resolve(sourcePath, 'main.ts'),
-    testWebComponent: path.resolve(sourcePath, 'test-web-component.ts')
+    testWebComponent: path.resolve(sourcePath, 'test-web-component.ts'),
+    angularAppAsWebComponentExample: 'angular-app-as-web-component-example'
   },
 
   output: {
