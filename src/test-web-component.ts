@@ -1,17 +1,16 @@
 import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 class TestWebComponent extends HTMLElement {
-  inputObservable: Observable<number>;
-  outputSubject: Subject<void>;
-  outputObservable: Observable<void>;
+  value: Observable<number>;
   textElement: HTMLElement;
 
   constructor() {
     super();
 
-    this.outputSubject = new Subject();
-    this.outputObservable = this.outputSubject.asObservable();
+    const style = document.createElement('style');
+    style.innerText = `test-web-component { display: block; background-color: #99ff99; padding: 0.5em; }`;
+    this.appendChild(style);
 
     this.textElement = document.createElement('span');
     this.textElement.innerHTML = 'Test web component initialized';
@@ -22,18 +21,19 @@ class TestWebComponent extends HTMLElement {
     button.onclick = this.clickHandler.bind(this);
     button.style.marginLeft = '0.5em';
     this.appendChild(button);
-
     setTimeout(() => this.setup());
   }
 
   clickHandler() {
-    this.outputSubject.next();
+    this.dispatchEvent(new Event('button-click'));
   }
 
   setup() {
-    this.inputObservable.subscribe(value => {
-      this.textElement.innerHTML = `This is a test web component with value: <b>${value.toString()}</b>`;
-    });
+    if (this.value && this.value.constructor && this.value.constructor.name === 'Observable') {
+      this.value.subscribe(value => {
+        this.textElement.innerHTML = `This is a test web component with value: <b>${value.toString()}</b>`;
+      });
+    }
   }
 }
 

@@ -2,7 +2,7 @@ import { default as uiRouter, StateProvider } from '@uirouter/angularjs';
 import { Ng1StateDeclaration } from '@uirouter/angularjs/lib/interface';
 import { getTypeName, NgModule } from 'angular-ts-decorators';
 import { HomeComponent } from './home/home.component';
-import { TestComponent } from './test/test.component';
+import { WebComponentExampleComponent } from './web-component-example/web-component-example.component';
 import {
   AngularAppAsWebComponentExampleComponent
 } from './angular-app-as-web-component-example/angular-app-as-web-component-example.component';
@@ -18,9 +18,9 @@ const routes: UiState[] = [
     component: HomeComponent
   },
   {
-    name: 'test',
-     url: '/test',
-     component: TestComponent
+    name: 'web-component-example',
+     url: '/web-component-example',
+     component: WebComponentExampleComponent
   },
   {
     name: 'angular-app-as-web-component-example',

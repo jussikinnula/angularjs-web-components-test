@@ -1,11 +1,12 @@
-<h3>Angular App as WebComponent example</h3>
+<h3>Test</h3>
 <p>
   Test input:
   <b>{{$ctrl.value}}</b>
   <button ng-click="$ctrl.increment()">Increment</button>
 </p>
-<test-angular-component
-  value="$ctrl.value"
+<test-web-component
+  value="$ctrl.valueObservable"
   on-button-click="$ctrl.increment($event)"
   ce-one-way
-></test-angular-component>
+>
+</test-web-component>
