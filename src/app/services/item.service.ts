@@ -43,7 +43,7 @@ export class ItemService {
     if (!term.trim()) {
       deferred.resolve([]);
     }
-    const items = this.items.filter(item => item.title.includes(term));
+    const items = this.items.filter(item => item.title.indexOf(term) > -1);
     deferred.resolve(items);
     return deferred.promise;
   }

@@ -1,7 +1,7 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 const CopyPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
@@ -14,9 +14,10 @@ export const commonConfig: webpack.Configuration = {
   devtool: 'cheap-eval-source-map',
 
   entry: {
-    app: path.resolve(sourcePath, 'main.ts'),
-    testWebComponent: path.resolve(sourcePath, 'test-web-component.ts'),
-    angularAppAsWebComponentExample: 'angular-app-as-web-component-example'
+    'polyfills': path.resolve(sourcePath, 'polyfills.ts'),
+    'test-web-component': path.resolve(sourcePath, 'test-web-component.ts'),
+    'angular-app-as-web-component-examplet': 'angular-app-as-web-component-example',
+    'app': path.resolve(sourcePath, 'main.ts')
   },
 
   output: {

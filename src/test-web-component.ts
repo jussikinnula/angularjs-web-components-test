@@ -1,8 +1,7 @@
-import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
 import { Observable } from 'rxjs/Observable';
 
 class TestWebComponent extends HTMLElement {
-  value: Observable<number>;
+  value: Observable<number> | string;
   textElement: HTMLElement;
 
   constructor() {
@@ -29,12 +28,12 @@ class TestWebComponent extends HTMLElement {
   }
 
   setup() {
-    if (this.value && this.value.constructor && this.value.constructor.name === 'Observable') {
+    if (this.value && typeof this.value !== 'string' && this.value.constructor && this.value.constructor.name === 'Observable') {
       this.value.subscribe(value => {
-        this.textElement.innerHTML = `This is a test web component with value: <b>${value.toString()}</b>`;
+        this.textElement.innerHTML = 'This is a test web component with value: <b>' + value + '</b>';
       });
     }
   }
 }
 
-window.customElements.define('test-web-component', TestWebComponent);
+customElements.define('test-web-component', TestWebComponent);

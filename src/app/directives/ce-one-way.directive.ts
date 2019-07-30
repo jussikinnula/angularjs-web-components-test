@@ -125,7 +125,7 @@ export class CeOneWayDirective implements OnDestroy {
   makeInput(ctrlProp, elProp) {
     this.$scope.$watch(ctrlProp, value => {
       const isObservable = value instanceof Observable;
-      const isInitialized = this.observableKeys.includes(ctrlProp);
+      const isInitialized = this.observableKeys.indexOf(ctrlProp) > -1;
 
       if ((isObservable && !isInitialized)) {
         this.$element[0][elProp] = value;
